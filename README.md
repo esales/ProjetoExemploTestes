@@ -16,6 +16,12 @@ Aplicação CRUD desenvolvida com:
 git clone https://github.com/esales/ProjetoExemploTestes.git
 ```
 
+## Entrar na pasta
+
+```bash
+cd ProjetoExemploTestes
+```
+
 ## Instalar dependências
 
 ```bash
@@ -27,3 +33,7 @@ npm install
 ```bash
 npm start
 ```
+
+## Acessar aplicação
+
+No navegador, acessar http://localhost:3000
