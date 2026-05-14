@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Médicos</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            padding: 40px;
+        }
+
+        .containerPrincipal{
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .topoPagina{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tituloPagina{
+            color: #0f172a;
+            font-size: 2rem;
+        }
+
+        .grupoBotoes{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .botaoLink{
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .botaoLink:hover{
+            background: #1d4ed8;
+        }
+
+        .botaoSecundario{
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .botaoSecundario:hover{
+            background: #cbd5e1;
+        }
+
+        .listaMedicos{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .itemMedico{
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .itemMedico:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+
+        .nomeMedico{
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .tituloEspecialidades{
+            font-size: 1rem;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .listaEspecialidades{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .itemEspecialidade{
+            background: #dbeafe;
+            color: #1e3a8a;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px){
+
+            body{
+                padding: 20px;
+            }
+
+            .containerPrincipal{
+                padding: 25px;
+            }
+
+            .topoPagina{
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .grupoBotoes{
+                flex-direction: column;
+            }
+
+            .botaoLink{
+                text-align: center;
+            }
+
+            .listaEspecialidades{
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="containerPrincipal">
+
+        <div class="topoPagina">
+
+            <h1 class="tituloPagina">
+                Lista de Médicos
+            </h1>
+
+            <div class="grupoBotoes">
+
+                <a href="/medico/novo" class="botaoLink">
+                    Cadastrar Médico
+                </a>
+
+                <a href="/" class="botaoLink botaoSecundario">
+                    Voltar
+                </a>
+
+            </div>
+
+        </div>
+
+        <ul class="listaMedicos">
+
+            {{#each medicos}}
+
+                <li class="itemMedico">
+
+                    <div class="nomeMedico">
+                        {{this.nome}}
+                    </div>
+
+                    <div class="tituloEspecialidades">
+                        Especialidades
+                    </div>
+
+                    <ul class="listaEspecialidades">
+
+                        {{#each this.especialidades}}
+
+                            <li class="itemEspecialidade">
+                                {{this.descricao}}
+                            </li>
+
+                        {{/each}}
+
+                    </ul>
+
+                </li>
+
+            {{/each}}
+
+        </ul>
+
+    </div>
+
+</body>
+</html>
